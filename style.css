@@ -1,0 +1,142 @@
+body {
+  background-color: #242425;
+  color: aliceblue;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+}
+/***************BON******************/
+#bon {
+  height: 99vh;
+  min-width: 20rem;
+  background-color: #473783;
+  display: flex;
+  border-radius: 10px;
+  position: relative;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+#bon-header {
+  background-color: #785ddc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 10vh;
+  border-radius: 10px 10px 0 0;
+  font-size: 2rem;
+}
+
+.bon-artikel {
+  height: 79vh;
+  font-size: 1.5rem;
+  overflow: auto;
+}
+
+.bon-artikel-position {
+  display: flex;
+  justify-content: right;
+  padding: 10px 10px 10px 10px;
+  border-bottom: 1px solid rgb(129, 126, 126);
+}
+
+#bon-footer {
+  background-color: #785ddc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 10vh;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  bottom: 0px;
+  font-size: 1.75rem;
+}
+
+#footer-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-button {
+  border-radius: 10px;
+  padding: 0.2em 0.5em;
+
+  background-color: #1a2961;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+.footer-button:hover {
+  background-color: #10193c;
+  cursor: pointer;
+  transition: all 400ms;
+}
+
+/***************ARTIKEL******************/
+#artikel-liste {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0 10% 0 10%;
+}
+
+.artikel-kachel {
+  background-color: #1a2961;
+  min-height: 15rem;
+  min-width: 15rem;
+  margin: 2% 5% 2% 5%; /** top right bottom left **/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.kachel-titel {
+  font-size: 1.25rem;
+  width: 100%;
+  text-align: center;
+}
+
+.kachel-bild {
+  max-width: 7rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.kachel-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
+  color: black;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+}
+
+.kachel-buttons:hover {
+  background-color: #b09bfc;
+  cursor: pointer;
+  transition: all 400ms;
+}
+
+.preis-container {
+  padding-top: 10px;
+  display: flex;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}

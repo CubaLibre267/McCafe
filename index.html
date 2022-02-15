@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McCafé</title>
+    <link rel="stylesheet" href="style.css">
+    <!--Google Font import-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!------------BON------------>
+    <div id="bon">
+        <div id="bon-header">
+            Bon
+        </div>
+        <div class="bon-artikel">
+            <div class="bon-artikel-position">Test 5.00</div>
+        </div>
+        <div id="bon-footer">
+            <div id="footer-button-container">
+                <img src="img/refresh_white_24dp.svg" class="footer-button" onClick="refreshPage();" alt="">
+                <div class="footer-button">Pay <span id="pay-preis">0.00</span> €</div>
+            </div>
+        </div>
+    </div>
+    <!------------ARTIKEL------------>
+    <div id="artikel-liste">
+        <!------------Espresso------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Espresso</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(1.69)">klein</div>
+                <div class="kachel-buttons" onclick="addArticle(2.19)">groß</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">1,69</div>
+                <div class="kachel-preis">2,19</div>
+            </div>
+        </div>
+        <!------------Espresso Macchiato------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Espresso Macchiato</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(1.79)">klein</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">1,79</div>
+            </div>
+        </div>
+        <!------------Cafe------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Cafe</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(1.79)">klein</div>
+                <div class="kachel-buttons" onclick="addArticle(2.19)">mittel</div>
+                <div class="kachel-buttons" onclick="addArticle(2.49)">groß</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">1,79</div>
+                <div class="kachel-preis">2,19</div>
+                <div class="kachel-preis">2,49</div>
+            </div>
+        </div>
+        <!------------Flat White Espresso------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Flat White Espresso</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(1.89)">klein</div>
+                <div class="kachel-buttons" onclick="addArticle(2.29)">mittel</div>
+                <div class="kachel-buttons" onclick="addArticle(2.59)">groß</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">1,89</div>
+                <div class="kachel-preis">2,29</div>
+                <div class="kachel-preis">2,59</div>
+            </div>
+        </div>
+        <!------------Cappuccino------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Cappuccino</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(1.99)">klein</div>
+                <div class="kachel-buttons" onclick="addArticle(2.39)">mittel</div>
+                <div class="kachel-buttons" onclick="addArticle(2.69)">groß</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">1,99</div>
+                <div class="kachel-preis">2,39</div>
+                <div class="kachel-preis">2,69</div>
+            </div>
+        </div>
+        <!------------Caffe Latte------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Caffe Latte</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(1.99)">klein</div>
+                <div class="kachel-buttons" onclick="addArticle(2.39)">mittel</div>
+                <div class="kachel-buttons" onclick="addArticle(2.69)">groß</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">1,99</div>
+                <div class="kachel-preis">2,39</div>
+                <div class="kachel-preis">2,69</div>
+            </div>
+        </div>
+        <!------------Latte Macchiato------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Latte Macchiato</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(2.39)">klein</div>
+                <div class="kachel-buttons" onclick="addArticle(2.69)">mittel</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">2,39</div>
+                <div class="kachel-preis">2,69</div>
+            </div>
+        </div>
+        <!------------Mocha Espresso------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Mocha Espresso</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(2.29)">klein</div>
+                <div class="kachel-buttons" onclick="addArticle(2.69)">mittel</div>
+                <div class="kachel-buttons" onclick="addArticle(2.99)">groß</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">2,29</div>
+                <div class="kachel-preis">2,69</div>
+                <div class="kachel-preis">2,99</div>
+            </div>
+        </div>
+        <!------------Vienna------------>
+        <div class="artikel-kachel">
+            <div class="kachel-titel">Vienna</div>
+            <img src="img/kaffee4.png" class="kachel-bild"></img>
+            <div class="button-container">
+                <div class="kachel-buttons" onclick="addArticle(2.29)">klein</div>
+                <div class="kachel-buttons" onclick="addArticle(2.69)">mittel</div>
+                <div class="kachel-buttons" onclick="addArticle(2.99)">groß</div>
+            </div>
+            <div class="preis-container">
+                <div class="kachel-preis">2,29</div>
+                <div class="kachel-preis">2,69</div>
+                <div class="kachel-preis">2,99</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
