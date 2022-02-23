@@ -1,8 +1,3 @@
-für stempelkarte: zählervariable
-
-Mehtode AddtoBon ín addArticle einfügen und gleichen Preis übergeben,
-der gerade neu übergeben wurde
-
 für rausfinden wea ist kleinster kaffepreis: Zwischenspeichervariable anlegen und chekchen,
 ist neuer Preus größer oder Kleiner als alter? --> bei kleiner: zwischenspeichernr
 

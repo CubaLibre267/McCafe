@@ -1,5 +1,6 @@
 let newPrice = 0;
 let stempelkarte = 0;
+let zwischenspeicher = 100;
 
 function refreshPage() {
     window.location.reload();
@@ -18,7 +19,7 @@ function updateScroll() {
 
 function bestellung(itemname, itemprice) {
 
-    stempelKarteUpdate();
+    stempelKarteUpdate(itemprice);
 
     addPrice(itemprice);
 
@@ -70,11 +71,30 @@ function addPrice(price) {
     footerPreis.innerText = newPrice;
 }
 
-function stempelKarteUpdate() {
+function stempelKarteUpdate(itemprice) {
+    //Anzahl im Bon Header
     stempelkarte++;
-
     const sk = document.getElementById('anzahl-stempel');
     sk.innerText = stempelkarte;
+
+    //Zwischenspeicher updaten, wenn preis kleiner als vorheriger
+    if (zwischenspeicher > itemprice) {
+        zwischenspeicher = itemprice;
+    }
+
+    //Checken wann stempelkarte 5, 10 und 14 erreicht 
+    if (stempelkarte === 5) {
+        newPrice -= zwischenspeicher;
+
+    } else if (stempelkarte === 10) {
+
+    } else if (stempelkarte === 14) {
+
+        stempelkarte = 0;
+    }
+
+
+
 }
 
 function bezahlung() {
