@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="style.css">
     <!--Google Font import-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
 </head>
 
-<body>
+<body id="body">
     <!------------BON------------>
     <div id="bon">
         <div id="bon-header">
@@ -23,17 +22,17 @@
             </div>
         </div>
         <div id="artikelliste" class="bon-artikel-liste">
-            <ol reversed id="orderlist" class="list-unstyled">
-            </ol>
+            <div id="orderlist" class="list-unstyled">
+            </div>
         </div>
         <div id="bon-footer">
             <div id="footer-total">
                 <span>Total:</span>
                 <span id="footer-preis">0.00</span> €
             </div>
-            <div id="footer-button-container">
+            <div class="footer-button-container">
                 <img src="img/refresh_white_24dp.svg" class="footer-button" onClick="refreshPage();" alt="">
-                <div class="footer-button" onClick="bezahlung()">Bezahlen</div>
+                <div class="footer-button" id="but1" onClick="bezahlen()">Bezahlen</div>
             </div>
         </div>
     </div>
@@ -45,8 +44,8 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Espresso klein', 1.69)">klein</div>
-                    <div class="kachel-button" onclick="bestellung('Espresso groß', 2.19)">groß</div>
+                    <div class="kachel-button" onclick="main('Espresso klein', 1.69)">klein</div>
+                    <div class="kachel-button" onclick="main('Espresso groß', 2.19)">groß</div>
                 </div>
                 <div class="preis-container">
                     <div class="kachel-preis">1,69</div>
@@ -60,7 +59,7 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Espresso Macchiato klein', 1.79)">klein
+                    <div class="kachel-button" onclick="main('Espresso Macchiato klein', 1.79)">klein
                     </div>
                 </div>
                 <div class="preis-container">
@@ -74,9 +73,9 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Cafe klein', 1.79)">klein</div>
-                    <div class="kachel-button" onclick="bestellung('Cafe mittel', 2.19)">mittel</div>
-                    <div class="kachel-button" onclick="bestellung('Cafe groß', 2.49)">groß</div>
+                    <div class="kachel-button" onclick="main('Cafe klein', 1.79)">klein</div>
+                    <div class="kachel-button" onclick="main('Cafe mittel', 2.19)">mittel</div>
+                    <div class="kachel-button" onclick="main('Cafe groß', 2.49)">groß</div>
                 </div>
                 <div class="preis-container">
                     <div class="kachel-preis">1,79</div>
@@ -91,12 +90,12 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Flat White Espresso klein', 1.89)">klein
+                    <div class="kachel-button" onclick="main('Flat White Espresso klein', 1.89)">klein
                     </div>
-                    <div class=" kachel-button" onclick="bestellung('Flat White Espresso mittel', 2.29)">
+                    <div class=" kachel-button" onclick="main('Flat White Espresso mittel', 2.29)">
                         mittel
                     </div>
-                    <div class=" kachel-button" onclick="bestellung('Flat White Espresso groß', 2.59)">groß
+                    <div class=" kachel-button" onclick="main('Flat White Espresso groß', 2.59)">groß
                     </div>
                 </div>
                 <div class=" preis-container">
@@ -112,9 +111,9 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Cappuccino klein', 1.99)">klein</div>
-                    <div class=" kachel-button" onclick="bestellung('Cappuccino mittel', 2.39)">mittel</div>
-                    <div class=" kachel-button" onclick="bestellung('Cappuccino groß', 2.69)">groß</div>
+                    <div class="kachel-button" onclick="main('Cappuccino klein', 1.99)">klein</div>
+                    <div class=" kachel-button" onclick="main('Cappuccino mittel', 2.39)">mittel</div>
+                    <div class=" kachel-button" onclick="main('Cappuccino groß', 2.69)">groß</div>
                 </div>
                 <div class=" preis-container">
                     <div class="kachel-preis">1,99</div>
@@ -129,10 +128,10 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Caffe Latte klein', 1.99)">klein</div>
-                    <div class=" kachel-button" onclick="bestellung('Caffe Latte mittel', 2.39)">mittel
+                    <div class="kachel-button" onclick="main('Caffe Latte klein', 1.99)">klein</div>
+                    <div class=" kachel-button" onclick="main('Caffe Latte mittel', 2.39)">mittel
                     </div>
-                    <div class=" kachel-button" onclick="bestellung('Caffe Latte groß', 2.69)">groß</div>
+                    <div class=" kachel-button" onclick="main('Caffe Latte groß', 2.69)">groß</div>
                 </div>
                 <div class=" preis-container">
                     <div class="kachel-preis">1,99</div>
@@ -147,9 +146,9 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Latte Macchiato klein', 2.39)">klein
+                    <div class="kachel-button" onclick="main('Latte Macchiato klein', 2.39)">klein
                     </div>
-                    <div class="kachel-button" onclick="bestellung('Latte Macchiato mittel', 2.69)">mittel
+                    <div class="kachel-button" onclick="main('Latte Macchiato mittel', 2.69)">mittel
                     </div>
                 </div>
                 <div class="preis-container">
@@ -164,11 +163,11 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Mocha Espresso klein', 2.29)">klein
+                    <div class="kachel-button" onclick="main('Mocha Espresso klein', 2.29)">klein
                     </div>
-                    <div class="kachel-button" onclick="bestellung('Mocha Espresso mittel', 2.69)">mittel
+                    <div class="kachel-button" onclick="main('Mocha Espresso mittel', 2.69)">mittel
                     </div>
-                    <div class="kachel-button" onclick="bestellung('Mocha Espresso groß', 2.99)">groß</div>
+                    <div class="kachel-button" onclick="main('Mocha Espresso groß', 2.99)">groß</div>
                 </div>
                 <div class="preis-container">
                     <div class="kachel-preis">2,29</div>
@@ -183,9 +182,9 @@
             <img src="img/kaffee4.png" class="kachel-bild"></img>
             <div id="button-preis-container">
                 <div class="button-container">
-                    <div class="kachel-button" onclick="bestellung('Vienna klein', 2.29)">klein</div>
-                    <div class="kachel-button" onclick="bestellung('Vienna mittel', 2.69)">mittel</div>
-                    <div class="kachel-button" onclick="bestellung('Vienna groß', 2.99)">groß</div>
+                    <div class="kachel-button" onclick="main('Vienna klein', 2.29)">klein</div>
+                    <div class="kachel-button" onclick="main('Vienna mittel', 2.69)">mittel</div>
+                    <div class="kachel-button" onclick="main('Vienna groß', 2.99)">groß</div>
                 </div>
                 <div class="preis-container">
                     <div class="kachel-preis">2,29</div>
@@ -195,6 +194,25 @@
             </div>
         </div>
     </div>
+    <div class="fullscreen-container">
+        <div id="popdiv">
+            <div class="bezahl-child-container">
+                <span class="bezahl-text">Rabatt: </span>
+                <span id="end-rabatt" class="bezahl-preis"></span>
+            </div>
+            <div class="bezahl-child-container">
+                <span class="bezahl-text">Finaler Betrag: </span>
+                <span id="end-final" class="bezahl-preis"></span>
+            </div>
+            <span class="bezahl-text">Möchten Sie eine weitere Bestellung aufgeben?</span>
+            <div class="footer-button-container">
+                <div class="footer-button" id="but2" style="font-size: 2rem;" onclick="ja()">Ja</div>
+                <div class="footer-button" style="font-size: 2rem;" onclick="refreshPage()">Nein</div>
+            </div>
+        </div>
+    </div>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script defer src="script.js"></script>
 </body>
 
 </html>

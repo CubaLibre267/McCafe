@@ -1,111 +1,159 @@
 let newPrice = 0;
 let stempelkarte = 0;
-let zwischenspeicher = 100;
+let bonnummer = 0;
+let map = new Map();
+let sortedMap = new Map();
+let counterTotalItems = 0;
+let counterReducedItems = 0;
+let discount = 0;
 
 function refreshPage() {
     window.location.reload();
 }
-/*
-window.setInterval(function () {
-    let elem = document.getElementById('artikelliste');
-    elem.scrollTop = elem.scrollHeight;
-}, 50);
-*/
 
-function updateScroll() {
-    var element = document.getElementById("yourDivID");
-    element.scrollTop = element.scrollHeight;
-}
+function main(itemname, itemprice) {
 
-function bestellung(itemname, itemprice) {
-
-    stempelKarteUpdate(itemprice);
+    stempelkarte++;
+    stempelKarteUpdate();
 
     addPrice(itemprice);
 
     const orderlist = document.getElementById('orderlist');
-
-    //LI tag erstellen
-    const orderitem = document.createElement('li');
-
-    //  IMAGE SECTION
-    //img tag erstellen
-    const orderitemimgtag = document.createElement('img');
-    //Klassenname zu img anhängen
-    orderitemimgtag.className = 'bon-artikel-bild';
-    //Src zu img tag hinzufügen 
-    orderitemimgtag.src = 'img/kaffee4.png';
-    //Child an LI anhängen
-    orderitem.appendChild(orderitemimgtag);
-
-    //Span für rote Farbe erstellen
-    const orderitempricespan = document.createElement('span');
-
-    //textnode erstellen mit itemname and itemprice
-    const orderitemname = document.createTextNode(itemname + ' ');
-    const orderitemprice = document.createTextNode(itemprice + ' €');
-
-    //span die klasse für rote farbe geben 
-    orderitempricespan.className = 'bon-artikel-preis';
-
-    //pricetextnode span zu span hinzufügen
-    orderitempricespan.appendChild(orderitemprice);
-
-    //Itemname tag und itemprice an LI anhängen
-    orderitem.appendChild(orderitemname);
-
-    //orderitempricespan an LI anhängen
-    orderitem.appendChild(orderitempricespan);
-
-    //LI an Parent id=orderlist anhängen
-    orderlist.appendChild(orderitem);
-}
-
-function addPrice(price) {
-
-    price += newPrice;
-
-    newPrice = numb = Math.round((price + Number.EPSILON) * 100) / 100;
-
-    let footerPreis = document.getElementById("footer-preis");
-    footerPreis.innerText = newPrice;
-}
-
-function stempelKarteUpdate(itemprice) {
-    //Anzahl im Bon Header
-    stempelkarte++;
-    const sk = document.getElementById('anzahl-stempel');
-    sk.innerText = stempelkarte;
-
-    //Zwischenspeicher updaten, wenn preis kleiner als vorheriger
-    if (zwischenspeicher > itemprice) {
-        zwischenspeicher = itemprice;
-    }
+    orderlist.innerHTML += `
+        <div id="bonnummer-${bonnummer}" class="test">
+            <div class="bon-artikel-div">
+                <div class="bon-artikel-zaehler">${1 + bonnummer + '.'}</div>
+                <img src="img/kaffee4.png" class="bon-artikel-bild"></img>
+                <span class="bon-artikel-text">${itemname}</span>
+                <span class="bon-artikel-preis" id="span-${bonnummer}">${itemprice}</span>
+            </div>
+        </div> 
+        `;
 
     //Checken wann stempelkarte 5, 10 und 14 erreicht 
     if (stempelkarte === 5) {
-        newPrice -= zwischenspeicher;
+
+        counterReducedItems++;
+        counterTotalItems--;
+        updatePrice();
 
     } else if (stempelkarte === 10) {
 
+        counterReducedItems++;
+        counterTotalItems--;
+        updatePrice();
+
     } else if (stempelkarte === 14) {
 
+        counterReducedItems++;
+        counterTotalItems--;
         stempelkarte = 0;
+        updatePrice();
+
     }
 
+    bonnummer++;
+    counterTotalItems++;
+
+    console.log('discount: ' + discount)
+    console.log('newPrice: ' + newPrice)
 
 
 }
 
-function bezahlung() {
+function stempelKarteUpdate() {
+    //Anzahl im Bon Header
+    const sk = document.getElementById('anzahl-stempel');
+    sk.innerText = stempelkarte;
+}
 
-    //Price wieder auf null
-    newPrice = 0.00;
+function addPrice(itemprice) {
+    //Preis hinzufügen, index beginnt bei 1
+    map.set(bonnummer, itemprice);
+
+    //Preis berechnen und anzeigen bei Total
+    const iterator = map.values();
+    let sum = 0;
+    for (let i = 0; i < map.size; i++) {
+        sum += iterator.next().value;
+    }
+
+    sum = Math.round((sum + Number.EPSILON) * 100) / 100;
+
+    document.getElementById("footer-preis").innerText = sum;
+
+    newPrice = sum;
+
+    //Map von klein nach groß sortieren
+    const mapSort = new Map([...map.entries()].sort((a, b) => a[1] - b[1]));
+    sortedMap = mapSort;
+    console.log(newPrice)
+}
+
+function updatePrice() {
+    //Nimm ersten Key und ersten Value
+    const [firstKey] = sortedMap.keys();
+    const [firstValue] = sortedMap.values();
+
+    //Altem Preis, die neue Klasse geben für durchgestrichen
+    document.getElementById('span-' + firstKey).className = 'bon-artikel-reduzierterpreis';
+
+    //Neuen Preis 0.00€ hinzufügen
+    document.getElementById('bonnummer-' + firstKey).innerHTML += `
+    <span class="bon-artikel-gutschrift">0.00 € (Gutschrift)</span>
+    `;
+
+    //Ziehe Value vom Betrag ab und addiere Betrag zu Discount für Endkarte
+    discount += firstValue;
+    newPrice -= firstValue;
+    newPrice = Math.round((newPrice + Number.EPSILON) * 100) / 100;
+    document.getElementById("footer-preis").innerText = newPrice;
+
+
+    //Lösche die erste Stelle
+    sortedMap.delete(firstKey);
+    map.delete(firstKey);
+}
+
+//Bezahl-Fenster-Animation
+$(function () {
+    $("#but1").click(function () {
+        $(".fullscreen-container").fadeTo(200, 1);
+    });
+    $("#but2").click(function () {
+        $(".fullscreen-container").fadeOut(200);
+    });
+});
+
+function bezahlen() {
+
+    //Rabatt anzeigen
+    document.getElementById('end-rabatt').innerText = discount + ' €'
+
+    //Finale Summe anzeigen
+    document.getElementById("end-final").innerText = newPrice + ' €';
+}
+
+
+function ja() {
+    //Weitere Bestellung aufgeben: Werte zurücksetzen, aber nicht Stempelkarte
     let footerPreis = document.getElementById("footer-preis");
     footerPreis.innerText = '0.00';
+
+    newPrice = 0;
+    bonnummer = 0;
+    map.clear();
+    sortedMap.clear();
+    counterTotalItems = 0;
+    counterReducedItems = 0;
+    discount = 0;
 
     //Bon leeren
     const orderlist = document.getElementById('orderlist');
     orderlist.innerText = '';
+
+    //Frage-Container entfernen
+    document.getElementById('frage-container').outerHTML = "";
+    frage = false;
 }
 
