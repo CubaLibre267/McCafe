@@ -3,8 +3,6 @@ let stempelkarte = 0;
 let bonnummer = 0;
 let map = new Map();
 let sortedMap = new Map();
-let counterTotalItems = 0;
-let counterReducedItems = 0;
 let discount = 0;
 
 function refreshPage() {
@@ -32,33 +30,18 @@ function main(itemname, itemprice) {
 
     //Checken wann stempelkarte 5, 10 und 14 erreicht 
     if (stempelkarte === 5) {
-
-        counterReducedItems++;
-        counterTotalItems--;
         updatePrice();
 
     } else if (stempelkarte === 10) {
-
-        counterReducedItems++;
-        counterTotalItems--;
         updatePrice();
 
     } else if (stempelkarte === 14) {
-
-        counterReducedItems++;
-        counterTotalItems--;
         stempelkarte = 0;
         updatePrice();
 
     }
 
     bonnummer++;
-    counterTotalItems++;
-
-    console.log('discount: ' + discount)
-    console.log('newPrice: ' + newPrice)
-
-
 }
 
 function stempelKarteUpdate() {
@@ -144,8 +127,6 @@ function ja() {
     bonnummer = 0;
     map.clear();
     sortedMap.clear();
-    counterTotalItems = 0;
-    counterReducedItems = 0;
     discount = 0;
 
     //Bon leeren

@@ -1,14 +1,4 @@
-//Version: 5.0 Berechnung mit Stempelkarte funktionniert!
-//Version: 8.0 Final Berechnung fertig
-//Version: 9.0 Desktop Version fertig
 
-Merken:
-
-    1. Bezahlübersicht (siehe JTL-Pos)
-    2. Mobile
-    3. 
-
- /*
         const orderlist = document.getElementById('orderlist');
 
         //LI tag erstellen
@@ -45,4 +35,4 @@ Merken:
 
         //LI an Parent id=orderlist anhängen
         orderlist.appendChild(orderitem);
-        */
+        
