@@ -6,11 +6,6 @@ body {
   padding: 0;
   margin: 0;
 }
-/***************Warenkorb Mobile******************/
-#warenkorb {
-  display: none;
-}
-
 /***************BON******************/
 #bon {
   height: 99vh;
@@ -96,7 +91,6 @@ body {
   display: flex;
   align-items: center;
   padding: 0 5px 0 5px;
-  white-space: nowrap;
 }
 
 .bon-artikel-gutschrift {
@@ -271,46 +265,7 @@ body {
 @media screen and (max-width: 1100px) {
   /***************BON******************/
   #bon {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-
-  #footer-total {
-    font-size: 2rem;
-  }
-
-  #footer-button-container {
-    background-color: violet;
-  }
-
-  #artikel-liste {
-    background-color: #111111;
-  }
-  /***************Warenkorb Mobile******************/
-  #warenkorb {
-    background-color: #1bb35a;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    padding: 4%;
-    top: 10px;
-    right: 10px;
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-  }
-
-  #cart-img {
-    width: 40px;
-    height: auto;
-  }
-
-  #wk-total {
-    white-space: nowrap;
+    display: none;
   }
 
   /***************ARTIKEL******************/
