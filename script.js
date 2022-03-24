@@ -5,6 +5,15 @@ let map = new Map();
 let sortedMap = new Map();
 let discount = 0;
 
+//Warenkorb Bon
+function openBon() {
+    document.getElementById("bon").style.width = "100%";
+}
+
+function closeBon() {
+    document.getElementById("bon").style.width = "0";
+}
+
 function refreshPage() {
     window.location.reload();
 }
@@ -23,7 +32,7 @@ function main(itemname, itemprice) {
                 <div class="bon-artikel-zaehler">${1 + bonnummer + '.'}</div>
                 <img src="img/kaffee4.png" class="bon-artikel-bild"></img>
                 <span class="bon-artikel-text">${itemname}</span>
-                <span class="bon-artikel-preis" id="span-${bonnummer}">${itemprice}</span>
+                <span class="bon-artikel-preis" id="span-${bonnummer}">${itemprice + ' €'}</span>
             </div>
         </div> 
         `;
@@ -63,14 +72,14 @@ function addPrice(itemprice) {
 
     sum = Math.round((sum + Number.EPSILON) * 100) / 100;
 
-    document.getElementById("footer-preis").innerText = sum;
+    document.getElementById("footer-preis").innerText = sum + ' €';
+    document.getElementById("wk-total").innerText = sum + ' €';
 
     newPrice = sum;
 
     //Map von klein nach groß sortieren
     const mapSort = new Map([...map.entries()].sort((a, b) => a[1] - b[1]));
     sortedMap = mapSort;
-    console.log(newPrice)
 }
 
 function updatePrice() {
@@ -90,7 +99,8 @@ function updatePrice() {
     discount += firstValue;
     newPrice -= firstValue;
     newPrice = Math.round((newPrice + Number.EPSILON) * 100) / 100;
-    document.getElementById("footer-preis").innerText = newPrice;
+    document.getElementById("footer-preis").innerText = newPrice + ' €';
+    document.getElementById("wk-total").innerText = newPrice + ' €';
 
 
     //Lösche die erste Stelle

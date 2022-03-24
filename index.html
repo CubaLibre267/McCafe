@@ -12,9 +12,15 @@
 </head>
 
 <body id="body">
+    <!------------Warenkorb Mobile------------>
+    <div id="warenkorb" onClick="openBon()">
+        <img id="cart-img" src="img/outline_shopping_cart_white_24dp.png" alt="">
+        <span id="wk-total">0.00 €</span>
+    </div>
     <!------------BON------------>
     <div id="bon">
         <div id="bon-header">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeBon()">&times;</a>
             <span id="bon-header-titel">Bon</span>
             <div>
                 <span>Stempelkarte:</span>
@@ -27,8 +33,8 @@
         </div>
         <div id="bon-footer">
             <div id="footer-total">
-                <span>Total:</span>
-                <span id="footer-preis">0.00</span> €
+                <span #footer-text>Total:</span>
+                <span id="footer-preis">0.00 €</span>
             </div>
             <div class="footer-button-container">
                 <img src="img/refresh_white_24dp.svg" class="footer-button" onClick="refreshPage();" alt="">
@@ -206,13 +212,13 @@
             </div>
             <span class="bezahl-text">Möchten Sie eine weitere Bestellung aufgeben?</span>
             <div class="footer-button-container">
-                <div class="footer-button" id="but2" style="font-size: 2rem;" onclick="ja()">Ja</div>
+                <div class="footer-button" id="but2" style="font-size: 2rem;" onclick="ja();closeBon();">Ja</div>
                 <div class="footer-button" style="font-size: 2rem;" onclick="refreshPage()">Nein</div>
             </div>
         </div>
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script defer src="script.js"></script>
     </div>
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script defer src="script.js"></script>
 </body>
 
 </html>
