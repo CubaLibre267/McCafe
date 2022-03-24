@@ -1,8 +1,3 @@
-#wrapper {
-  position: relative;
-  overflow-x: hidden;
-}
-
 body {
   background-color: #242425;
   color: aliceblue;
@@ -11,18 +6,10 @@ body {
   padding: 0;
   margin: 0;
 }
-/***************Mobile******************/
-#warenkorb {
-  display: none;
-}
-
-.closebtn {
-  display: none;
-}
 /***************BON******************/
 #bon {
   height: 99vh;
-  width: 30vw;
+  min-width: 20rem;
   background-color: #473783;
   display: flex;
   border-radius: 10px;
@@ -104,7 +91,6 @@ body {
   display: flex;
   align-items: center;
   padding: 0 5px 0 5px;
-  white-space: nowrap;
 }
 
 .bon-artikel-gutschrift {
@@ -122,7 +108,7 @@ body {
   min-height: 15vh;
   border-radius: 0 0 10px 10px;
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   font-size: 1.75rem;
 }
 
@@ -135,7 +121,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  padding-bottom: 5%;
 }
 
 .footer-button {
@@ -280,62 +265,7 @@ body {
 @media screen and (max-width: 1100px) {
   /***************BON******************/
   #bon {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    overflow-x: hidden;
-    transition: 0.5s;
-  }
-
-  #bon .closebtn {
-    display: block;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 40px;
-    /*margin-left: 50px;*/
-    color: aliceblue;
-    text-decoration: none;
-  }
-
-  #footer-total {
-    font-size: 2rem;
-  }
-
-  #footer-button-container {
-    background-color: violet;
-  }
-
-  #artikel-liste {
-    background-color: #111111;
-  }
-  /***************Warenkorb Mobile******************/
-  #warenkorb {
-    background-color: #1bb35a;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    padding: 15px;
-    top: 10px;
-    right: 10px;
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-  }
-
-  #cart-img {
-    width: 30px;
-    height: auto;
-  }
-
-  #wk-total {
-    white-space: nowrap;
+    display: none;
   }
 
   /***************ARTIKEL******************/
